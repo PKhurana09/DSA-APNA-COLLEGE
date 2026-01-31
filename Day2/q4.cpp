@@ -29,8 +29,13 @@ vector<vector<int>> threeSum(vector<int>& nums){
                     vector<int> temp = {nums[i], nums[j], nums[k]};
 
                     sort(temp.begin(), temp.end());
+                    if(retVal.find(temp) == retVal.end()){
+                        retVal.insert(temp);
+                        ans.push_back(temp);
+                    }
                 }
             }
         }
     }
+    return ans;
 }

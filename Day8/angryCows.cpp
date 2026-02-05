@@ -7,10 +7,27 @@
 using namespace std;
 
 int aggressiveCows(vector<int>& stalls, int cows);
+bool isValid(vector<int>& stalls, int cows, int minDistance);
 
 int main(void){
 
     return EXIT_SUCCESS;
+}
+
+bool isValid(vector<int>& stalls, int cows, int minDistance){
+    int n = stalls.size();
+    int cowsPlaced = 1;
+    int currentIndex = 1;
+    int lastPlacedIndex = 0;
+
+    while(currentIndex < n && cowsPlaced < cows){
+        if(stalls[currentIndex] - stalls[lastPlacedIndex] >= minDistance){
+            ++cowsPlaced;
+            lastPlacedIndex = currentIndex;
+        }
+        currentIndex++;
+    }
+    return (cowsPlaced == cows);
 }
 
 int aggressiveCows(vector<int>& stalls, int cows){

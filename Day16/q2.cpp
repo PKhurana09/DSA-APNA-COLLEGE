@@ -26,7 +26,6 @@ Node* buildTree(vector<int> tree){
     q.push(root);
 
     int i = 1;
-
     while(!q.empty() && i < n){
         Node* curr = root;
 
@@ -55,3 +54,30 @@ int main(void){
 
     return EXIT_SUCCESS;
 }
+
+vector<vector<int>> levelOrder(Node* root){
+    vector<vector<int>> ans;
+        if (root == nullptr) return ans;
+
+        queue<Node*> q;
+        q.push(root);
+
+        while (!q.empty()) {
+            int levelSize = q.size();   // number of nodes at this level
+            vector<int> level;
+
+            for (int i = 0; i < levelSize; i++) {
+                Node* curr = q.front();
+                q.pop();
+
+                level.push_back(curr->val);
+
+                if (curr->left)  q.push(curr->left);
+                if (curr->right) q.push(curr->right);
+            }
+
+            ans.push_back(level);
+        }
+    return ans;
+}
+

@@ -41,6 +41,6 @@ bool isPlaindrome(string s){
     return true;
 }
 
-// string longestPalindrome(string s){
-
-// }
+string longestPalindrome(string s){
+    
+}
